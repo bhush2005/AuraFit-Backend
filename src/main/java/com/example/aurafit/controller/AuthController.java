@@ -9,6 +9,7 @@ import com.example.aurafit.model.User;
 import com.example.aurafit.repository.UserRepository;
 import com.example.aurafit.security.JwtUtils;
 import com.example.aurafit.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,7 +30,7 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest registerRequest){
         return ResponseEntity.ok(userService.register(registerRequest));
     }
 
