@@ -41,14 +41,15 @@ public class JwtUtils {
     }
 
     public boolean validateJwtToken(String jwtToken){
-        try{
+        try {
             Jwts.parser().verifyWith((SecretKey) key())
                     .build()
                     .parseSignedClaims(jwtToken);
-        } catch (Exception e){
+            return true;
+        } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return true;
     }
 
     private Key key(){
